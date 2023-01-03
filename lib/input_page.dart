@@ -1,11 +1,15 @@
+import 'package:bmi_calculator/resuable_card.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const bottomContainerHeight = 80.0;
+import 'icon_content.dart';
+
 const activeCardColor = Color(0xFF1D1E33);
+const bottomContainerHeight = 80.0;
 const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
-  const InputPage({super.key});
+  InputPage({super.key});
 
   @override
   State<InputPage> createState() => _InputPageState();
@@ -16,7 +20,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BMI Calculator'),
+        title: Text('BMI Calculator'),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -24,14 +28,23 @@ class _InputPageState extends State<InputPage> {
           children: [
             Expanded(
               child: Row(
-                children: const [
-                  Expanded(
-                      child: ReusableCard(
-                    color: activeCardColor,
-                  )),
+                children: [
                   Expanded(
                     child: ReusableCard(
                       color: activeCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      color: activeCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      ),
                     ),
                   ),
                 ],
@@ -39,8 +52,8 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: Container(
-                margin: const EdgeInsets.all(15.0),
-                decoration: const BoxDecoration(
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15.0),
                   ),
@@ -50,7 +63,7 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                       child: ReusableCard(
                     color: activeCardColor,
@@ -64,34 +77,13 @@ class _InputPageState extends State<InputPage> {
             ),
             Container(
               color: bottomContainerColor,
-              margin: const EdgeInsets.only(top: 10.0),
+              margin: EdgeInsets.only(top: 10.0),
               width: double.infinity,
               height: bottomContainerHeight,
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  const ReusableCard({super.key, required this.color, this.cardChild});
-
-  final Color color;
-  final Widget? cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(15.0),
-        ),
-        color: color,
-      ),
-      child: cardChild,
     );
   }
 }
