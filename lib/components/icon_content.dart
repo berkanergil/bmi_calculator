@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
-
-import '../constants.dart';
+import 'package:flutter/material.dart';
+import 'package:bmi_calculator/constants.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({required this.icon, required this.label});
+  const IconContent({required this.icon, required this.label});
+
   final IconData icon;
   final String label;
 
@@ -11,7 +11,7 @@ class IconContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         Icon(
           icon,
           size: 80.0,
@@ -22,7 +22,7 @@ class IconContent extends StatelessWidget {
         Text(
           label,
           style: kLabelTextStyle,
-        ),
+        )
       ],
     );
   }
